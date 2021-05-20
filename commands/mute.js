@@ -3,20 +3,6 @@ module.exports = {
 	name: 'mute',
 	description: "mute user. they can still join VC",
 	execute(message, args){
-		function getUserFromMention(mention){
-			if (!mention) return;
-			if (mention.startsWith('<@') && mention.endsWith('>')) {
-				mention = mention.slice(2, -1);
-
-				if (mention.startsWith('!')) {
-					mention = mention.slice(1);
-				}
-
-				return client.users.cache.get(mention);
-			}
-		}
-
-
 		let role = message.guild.roles.cache.find(r => r.name === "Bot Admin");
 		if(message.member.roles.cache.some(r => r.name === "Bot Admin")) //only ppl with "Bot Admin" role can run command
 		{
@@ -34,7 +20,8 @@ module.exports = {
 					memberTarget.roles.add(muteRole.id);
 					message.channel.send(`<@${memberTarget.user.id}> has been muted`);
 					var caller = message.author.username;
-					console.log(caller + " mutes ");
+					var callee = memberTarget.user.username;
+					console.log(caller + " mutes " + callee);
 					return
 				}
 				
@@ -45,7 +32,8 @@ module.exports = {
 				memberTarget.roles.add(muteRole.id);
 				message.channel.send(`<@${memberTarget.user.id}> has been muted for ${ms(ms(args[1]))}`);
 				var caller = message.author.username;
-				console.log(caller + " mutes ");
+				var callee = memberTarget.user.username;
+				console.log(caller + " mutes " + callee);
 				//console.log(name + " has been muted");
 				
 				setTimeout(function(){
