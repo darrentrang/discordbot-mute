@@ -19,7 +19,7 @@ module.exports = {
 					memberTarget.roles.remove(memberRole.id);
 					memberTarget.roles.add(muteRole.id);
 					message.channel.send(`<@${memberTarget.user.id}> has been muted`);
-					var name = memberTarget.use.id;
+					var name = memberTarget.user.id;
 					console.log(name + " has been muted");
 					return
 				}
@@ -30,14 +30,14 @@ module.exports = {
 				memberTarget.roles.remove(memberRole.id);
 				memberTarget.roles.add(muteRole.id);
 				message.channel.send(`<@${memberTarget.user.id}> has been muted for ${ms(ms(args[1]))}`);
-				var name = memberTarget.use.id;
+				var name = memberTarget.user.id;
 				console.log(name + " has been muted");
 				
 				setTimeout(function(){
 					memberTarget.roles.remove(muteRole.id);
 					memberTarget.roles.add(memberRole.id);
 					message.channel.send(`<@${memberTarget.user.id}> has been unmuted`);
-					var name = memberTarget.use.id;
+					var name = memberTarget.user.id;
 					console.log(name + " has been unmuted");
 				}, ms(args[1]));
 			}
