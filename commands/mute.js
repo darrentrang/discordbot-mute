@@ -19,6 +19,8 @@ module.exports = {
 					memberTarget.roles.remove(memberRole.id);
 					memberTarget.roles.add(muteRole.id);
 					message.channel.send(`<@${memberTarget.user.id}> has been muted`);
+					var name = memberTarget.use.id;
+					console.log(name + " has been muted");
 					return
 				}
 				
@@ -28,20 +30,25 @@ module.exports = {
 				memberTarget.roles.remove(memberRole.id);
 				memberTarget.roles.add(muteRole.id);
 				message.channel.send(`<@${memberTarget.user.id}> has been muted for ${ms(ms(args[1]))}`);
-				
+				var name = memberTarget.use.id;
+				console.log(name + " has been muted");
 				
 				setTimeout(function(){
 					memberTarget.roles.remove(muteRole.id);
 					memberTarget.roles.add(memberRole.id);
 					message.channel.send(`<@${memberTarget.user.id}> has been unmuted`);
+					var name = memberTarget.use.id;
+					console.log(name + " has been unmuted");
 				}, ms(args[1]));
 			}
 			else {
 				message.channel.send('Can not find that member');
+				console.log("cannot find that member");
 			}
 		}
 		else {
 			message.channel.send('You do not have permission to run this command');
+			console.log("you do not have permission to run this command");
 		}
 	}
 }
