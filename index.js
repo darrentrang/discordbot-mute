@@ -14,7 +14,7 @@ for(const file of commandFiles){
 
 client.once('ready', () => {
 	console.log('Yoshemango Bot is online!');
-	client.user.setActivity(`!mute @user #<s/m/h>`, {type: ''});
+	client.user.setActivity(`!mute @user #<s/m/h>`);
 });
 
 client.on('message', message=>{
